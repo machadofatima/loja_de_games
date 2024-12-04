@@ -21,9 +21,9 @@ public class Categoria {
     @Size(max = 100)
     private String descricao;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
-//    @JsonIgnoreProperties("categoria")
-//    private List<Produto> produto;
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("categoria")
+    private List<Produto> produtos;
 
     public Long getId() {
         return id;
@@ -41,13 +41,12 @@ public class Categoria {
         this.descricao = descricao;
     }
 
-//    public List<Produto> getProduto() {
-//        return produto;
-//    }
-//
-//    public void setProduto(List<Produto> produto) {
-//        this.produto = produto;
-//    }
-}
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
 
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+}
 
