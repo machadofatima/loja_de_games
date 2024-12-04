@@ -33,10 +33,9 @@ public class Produto {
 
     @Past
     @DateTimeFormat(pattern = "yyyy")
-    private LocalDate anoLancamento;
+    private LocalDate ano_lancamento;
 
     @ManyToOne
-    @JsonIgnoreProperties ("produto")
     private Categoria categoria;
 
     public Long getId() {
@@ -71,12 +70,12 @@ public class Produto {
         this.genero = genero;
     }
 
-    public LocalDate getAnoLancamento() {
-        return anoLancamento;
+    public LocalDate getAno_lancamento() {
+        return ano_lancamento;
     }
 
-    public void setAnoLancamento(LocalDate anoLancamento) {
-        this.anoLancamento = anoLancamento;
+    public void setAno_lancamento(LocalDate ano_lancamento) {
+        this.ano_lancamento = ano_lancamento;
     }
 
     public Categoria getCategoria() {

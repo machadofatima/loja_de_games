@@ -3,6 +3,9 @@ package com.generation.gamestation.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
@@ -10,13 +13,41 @@ import java.util.List;
 @Table(name = "tb_categoria")
 public class Categoria {
 
-    @Id // define que o atributo será a PK (primary key)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // A Anotação @GeneratedValue indica que a Chave Primária será gerada pelo Banco de dados. O parâmetro strategy indica de que forma esta Chave Primária será gerada. A Estratégia GenerationType.IDENTITY indica que a Chave Primária será gerada pelo Banco de dados através da opção auto-incremento (auto-increment) do SQL, que gera uma sequência numérica iniciando em 1.
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "categoria")
-    @JsonIgnoreProperties("categoria")
-    private List<Produto> produto;
+    @NotBlank
+    @Size(max = 100)
+    private String descricao;
 
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
+//    @JsonIgnoreProperties("categoria")
+//    private List<Produto> produto;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+//    public List<Produto> getProduto() {
+//        return produto;
+//    }
+//
+//    public void setProduto(List<Produto> produto) {
+//        this.produto = produto;
+//    }
 }
+
+
